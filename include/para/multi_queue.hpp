@@ -10,9 +10,11 @@
 
 namespace para::multi {
 
+using std::forward;
 using std::invocable;
+using std::packaged_task;
 
-PARA_EXPORT class task_system_mq {
+class PARA_EXPORT task_system_mq {
     unsigned int thread_count = std::jthread::hardware_concurrency();
     std::uint32_t spin_factor{1};
     std::atomic<unsigned int> idx;
@@ -35,8 +37,6 @@ public:
     template<typename F, typename... Args, typename R = std::invoke_result<F, Args...>::type>
         requires invocable<F, Args...>
     auto enqueue(F&& func, Args&&... args) -> std::future<R> {
-        using std::forward;
-        using std::packaged_task;
 
         auto task = std::make_shared<packaged_task<R()>>(std::bind(forward<F>(func), forward<Args>(args)...));
         auto res  = task->get_future();

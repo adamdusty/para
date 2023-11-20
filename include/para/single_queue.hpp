@@ -13,7 +13,7 @@ namespace para::single {
 
 using std::invocable;
 
-PARA_EXPORT class task_system_sq {
+class PARA_EXPORT task_system_sq {
     std::vector<std::jthread> threads;
     task_queue queue;
 

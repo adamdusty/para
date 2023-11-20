@@ -9,6 +9,7 @@
         {
             "name": "base",
             "hidden": true,
+            "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_CXX_EXTENSIONS": "OFF",
                 "CMAKE_CXX_STANDARD": "20",
@@ -43,6 +44,7 @@
             ],
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "BUILD_SHARED_LIBS": "ON",
                 "PARA_BUILD_TESTS": "ON",
                 "PARA_BENCHMARK": "ON"
             }
@@ -66,7 +68,7 @@
         {
             "name": "dev",
             "configurePreset": "dev",
-            "configuration": "Debug",
+            "configuration": "debug",
             "output": {
                 "outputOnFailure": true
             }
